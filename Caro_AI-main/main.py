@@ -145,7 +145,7 @@ if (is_developer_mode == True):
     e_btn.disable_button()
     ai_thinking_btn.disable_button()
 
-pygame.display.set_caption('Caro game by nhóm 12 Trí tuệ nhân tạo')
+pygame.display.set_caption('Caro game by nhóm 55 Trí tuệ nhân tạo')
 pygame.display.set_icon(icon_img)
 pygame.init()
 
@@ -161,7 +161,7 @@ clock = pygame.time.Clock()
 
 def logo():
     font = pygame.font.Font('freesansbold.ttf', 36)
-    text = font.render('By AI - nhóm 12', True, WHITE, BLACK)
+    text = font.render('By AI - nhóm 5', True, WHITE, BLACK)
     textRect = text.get_rect()
     textRect.center = (1100, 700)
     Screen.blit(text, textRect)
