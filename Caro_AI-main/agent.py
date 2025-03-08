@@ -1,6 +1,7 @@
 from caro import Caro
 import copy
 import random
+import time 
 
 TWO = 10
 TWO_OBSTACLE = 5
@@ -213,10 +214,15 @@ Về
             possible_moves = self.get_possible_moves_optimized(game)
             move = random.choice(possible_moves)
             return move
-
+        
+        start_time = time.monotonic()  # Bắt đầu đo thời gian
         best_score, best_move = self.minimax(
             game, self.max_depth, -INF * 10, INF * 10)
+        end_time = time.monotonic()
+        calculation_time = end_time - start_time  # Tính thời gian
 
+        # Lưu thời gian tính toán vào thuộc tính của đối tượng Agent
+        self.calculation_time = calculation_time
         return best_move
 
     def minimax(self, game: Caro, depth: int, alpha: int, beta: int, maximizing_player: int = 1) -> tuple[int, list[int]]:
