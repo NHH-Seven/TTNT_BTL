@@ -63,7 +63,7 @@ HEIGHT = my_len_min
 Screen = pygame.display.set_mode(Window_size)
 # path = "Caro/asset"
 path = os.getcwd()
-path = os.path.join(path, './caro_AI-main/asset')
+path = os.path.join(path, './asset')
 
 # ------------------------------Load asset----------------------------------------
 x_img = pygame.transform.smoothscale(pygame.image.load(
@@ -145,7 +145,7 @@ if (is_developer_mode == True):
     e_btn.disable_button()
     ai_thinking_btn.disable_button()
 
-pygame.display.set_caption('Caro game by Nguyen Huy Hieu')
+pygame.display.set_caption('Caro game by nhóm 12 Trí tuệ nhân tạo')
 pygame.display.set_icon(icon_img)
 pygame.init()
 
@@ -161,7 +161,7 @@ clock = pygame.time.Clock()
 
 def logo():
     font = pygame.font.Font('freesansbold.ttf', 36)
-    text = font.render('By AI - nhóm 5', True, WHITE, BLACK)
+    text = font.render('By AI - nhóm 12', True, WHITE, BLACK)
     textRect = text.get_rect()
     textRect.center = (1100, 700)
     Screen.blit(text, textRect)
@@ -303,12 +303,17 @@ while not done:
     # --------------------- AI turn-------------------------------------------
                 if my_game.turn == my_game.ai_turn:
                     if my_game.get_winner() == -1:
+                        agent = Agent(max_depth=my_game.hard_ai,
+                                    XO=my_game.get_current_XO_for_AI())
     # ---------------------AI MAKE MOVE---------------------------------------- ==================================
                         # my_game.random_ai()                                    #||  Here is where to change AI  ||
                         best_move = agent.get_move(my_game)                      #||                              ||
                         my_game.make_move(best_move[0], best_move[1])            #||                              ||
                         # pygame.time.delay(500)                                   #||          (❁´◡`❁)           ||
     # ------------------------------------------------------------------------- =================================
+                        calculation_time = agent.calculation_time
+                        print(f"Thời gian AI tính toán: {calculation_time:.4f} giây")
+                        
                         draw(my_game, Screen)
                     ai_thinking_btn.disable_button()
                     ai_thinking_btn.re_draw(Screen)
